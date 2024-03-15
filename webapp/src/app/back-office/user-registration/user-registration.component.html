@@ -1,0 +1,24 @@
+<h1 mat-dialog-title>Add new User</h1>
+<div mat-dialog-content>
+  <p>Fill in the form below</p>
+  <div class="row">
+    <div class="col">
+        <mat-form-field>
+            <input matInput placeholder="First name" type="text" [(ngModel)]="firstName" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+    </div>
+    <div class="col">
+        <mat-form-field>
+            <input matInput placeholder="Last name" type="text" [(ngModel)]="lastName" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+    </div>   
+    </div>
+    <mat-form-field>
+        <input matInput placeholder="Email" type="email" [(ngModel)]="email" [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button  tabindex="2" (click)="onSubmit()">Create
+  </button>
+  <button mat-button tabindex="-1">Cancel</button>
+</div>

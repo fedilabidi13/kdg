@@ -1,0 +1,7 @@
+/* You can add global styles to this file, and also import other style files */
+.mat-mdc-slide-toggle {
+    --mdc-switch-handle-surface-color: #b50064 !important;
+}
+.mdc-switch:enabled .mdc-switch__track::after {
+    background: rgb(255, 209, 236) !important;
+}

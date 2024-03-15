@@ -1,0 +1,79 @@
+<div class="container">
+  <div class="row">
+    <!-- Card column -->
+    <div class="col-12">
+      <mat-card>
+        <mat-card-content>
+          <mat-card-title>connect kubernetes cluster </mat-card-title>
+          <mat-card-subtitle>There are two steps for the procedure: Attach your cluster config file and fill in the form below</mat-card-subtitle>
+
+          <mat-horizontal-stepper [linear]="isLinear">
+            <mat-step [stepControl]="firstFormGroup">
+              <br>
+              <form [formGroup]="firstFormGroup">
+                <ng-template matStepLabel>Fill out your account information</ng-template>
+                <div class="row">
+                  <div class="col">
+                    <mat-form-field>
+                      <input matInput placeholder="First name"  required [(ngModel)]="firstName" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                  </div>
+                  <div class="col">
+                    <mat-form-field>
+                      <input matInput placeholder="Last name"  required [(ngModel)]="lastName" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <mat-form-field>
+                      <input matInput placeholder="Email" type="email"  required [(ngModel)]="email" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                  </div>
+                  
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <mat-form-field>
+                      <input matInput placeholder="Password" type="password" required [(ngModel)]="password" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                  </div>
+                  <div class="col">
+                    <mat-form-field>
+                      <input matInput placeholder="Confirm Password"  type="password" required>
+                    </mat-form-field>
+                  </div>
+                </div>
+                
+                <div>
+                  <button mat-raised-button color="warn" matStepperNext>Next</button>
+                </div>
+              </form>
+            </mat-step>
+            <mat-step [stepControl]="secondFormGroup">
+              <br>
+              <form [formGroup]="secondFormGroup">
+                <ng-template matStepLabel>Attach k8s configuration file</ng-template>
+                <mat-form-field>
+                  <ngx-mat-file-input [formControl]="fileFormControl"
+                  accept=".yaml, .png"
+                  [(ngModel)]="selectedFile"
+                  (change)="onFileSelected($event)">
+                  </ngx-mat-file-input>
+                </mat-form-field>
+                <div>
+                  <button mat-raised-button *ngIf="!visible" color="accent" matStepperPrevious>Back</button>
+                  <button mat-raised-button *ngIf="!visible" color="warn" (click)="onSubmit()" matStepperNext>Sumbit</button>
+                  <button mat-raised-button *ngIf="visible" color="warn" routerLink="/sign-in">Sign in</button>
+
+                </div>
+              </form>
+            </mat-step>
+           
+          </mat-horizontal-stepper>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
